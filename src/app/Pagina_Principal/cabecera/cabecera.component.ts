@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./cabecera.component.scss']
 })
 export class CabeceraComponent {
-
+  name = 'Angular';
+  public isCollapsed = true;
 }
