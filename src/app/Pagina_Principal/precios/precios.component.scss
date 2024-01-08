@@ -1,0 +1,51 @@
+/* styles.css */
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 400px;
+    margin: 18%;
+    
+  }
+  
+  .tarifas-container {
+    display: flex;
+    gap: 100px;
+  }
+  
+  .tarifa {
+    border: 1px solid #ccc; /* Borde para resaltar las tarifas */
+    border-radius: 10px; /* Bordes redondeados */
+    padding: 20px;
+    text-align: center;
+    width: 300px;
+    cursor: pointer;
+    transition: border-color 0.3s;
+  }
+  
+  .tarifa:hover {
+    border-color: #007BFF; /* Cambia el color del borde al pasar el ratón */
+  }
+  
+  .tarifa h2 {
+    color: #000; /* Color del título negro */
+    font-weight: bold; /* Texto en negrita */
+    font-size: 28px; /* Tamaño del título */
+  }
+  
+  .tarifa .tipo {
+    color: #007BFF; /* Color azul */
+    font-weight: bold; /* Texto en negrita */
+    font-size: 18px; /* Tamaño del tipo */
+  }
+  
+  .tarifa p {
+    font-size: 16px; /* Tamaño del texto */
+    margin: 10px 0; /* Margen superior e inferior del texto */
+  }
+  
+  .tarifa .precio-grande {
+    font-size: 24px; /* Tamaño más grande para el precio */
+    color: #007BFF; /* Color azul */
+  }
+  
