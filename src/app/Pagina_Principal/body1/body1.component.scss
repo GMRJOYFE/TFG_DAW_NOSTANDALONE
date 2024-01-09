@@ -7,49 +7,32 @@ body {
 }
 
 #contenedor {
-  width: 70%; /* Ancho del contenedor al 70% */
-  margin: 0 auto; /* Centrar horizontalmente */
-  padding: 20px; /* Agregar un poco de espacio alrededor del contenido */
+  width: 100%;
+  height: 100%; 
+  margin: 0 auto;
+  padding: 20px; 
   text-align: center;
+  margin-top: 330px;
 }
 
 #titulo {
   font-weight: bold;
   font-size: 24px;
   color: #333;
-  max-width: 100%; /* Ancho máximo del título */
-  margin-bottom: 10px; /* Espacio entre elementos */
+  max-width: 100%;
+  margin-bottom: 10px;
 }
 
 #descripcion {
   font-size: 18px;
   color: #666;
-  max-width: 100%; /* Ancho máximo para la descripción */
-  margin-bottom: 10px; /* Espacio entre elementos */
+  max-width: 100%;
+  margin-bottom: 10px;
 }
 
 #recomendacion {
   font-size: 14px;
   color: rgba(0, 0, 0, 0.7);
-  max-width: 100%; /* Ancho máximo para la recomendación */
-  margin-bottom: 10px; /* Espacio entre elementos */
-}
-
-/* Media Query para dispositivos móviles */
-@media screen and (max-width: 768px) {
-  #contenedor {
-      width: 90%; /* Reducir el ancho para dispositivos móviles */
-  }
-
-  #titulo {
-      font-size: 20px; /* Tamaño de fuente más pequeño */
-  }
-
-  #descripcion {
-      font-size: 16px; /* Tamaño de fuente más pequeño */
-  }
-
-  #recomendacion {
-      font-size: 12px; /* Tamaño de fuente más pequeño */
-  }
+  width: 100%;
+  margin: auto;
 }

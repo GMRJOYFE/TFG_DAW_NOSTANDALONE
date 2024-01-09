@@ -1,45 +1,19 @@
-body, html {
-  height: 100%;
+body {
   margin: 0;
-}
-
-.container {
-  height: 100%;
+  padding: 0;
+  height: 70vh;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+  background: url('../../../assets/pexels-pixabay-53621.jpg') center/cover no-repeat;
+
 }
 
-.content {
-  position: relative;
-}
-
-.text-container {
+.texto-centrado {
   text-align: center;
-  color: white; /* Color del texto */
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 100%;
-}
+  color: #fb8c05;
+  font-size: 6em;
+  border-color: black;
+  font-weight: 500;
 
-h1 {
-  font-size: 65px;
-  margin: 0;
-}
-
-p {
-  margin: 10px 0;
-}
-
-img {
-  width: 100%;
-  max-width: 1358px;
-  height: auto;
-  object-fit: cover;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: -1;
 }

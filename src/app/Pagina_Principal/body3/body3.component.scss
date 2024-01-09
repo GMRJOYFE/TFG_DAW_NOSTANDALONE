@@ -1,11 +1,16 @@
-/* Estilos generales que se aplicarán en ambos dispositivos */
 body {
-    margin: 0;
+    margin-bottom: 5%;
+    margin-left: 5%;
+    margin-right: 5%;
     font-family: Arial, sans-serif;
 }
 
 .contenedor {
     text-align: center;
+    background-color: rgb(132, 187, 187);
+    border-end-end-radius: 35%;
+    border-start-start-radius: 35%;
+    
 }
 
 .texto-centrado {
@@ -34,23 +39,4 @@ body {
     font-size: 18px;
     color: blue;
     font-weight: bold;
-}
-
-/* Media Queries para dispositivos móviles */
-@media only screen and (max-width: 768px) {
-    .texto-centrado {
-        font-size: 28px;
-    }
-
-    .primer_texto {
-        font-size: 16px;
-    }
-
-    .texto-grande {
-        font-size: 24px;
-    }
-
-    .texto-azul {
-        font-size: 14px;
-    }
 }
