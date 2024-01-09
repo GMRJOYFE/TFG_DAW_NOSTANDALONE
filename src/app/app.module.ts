@@ -13,6 +13,7 @@ import { PublicidadComponent } from './Pagina_Principal/publicidad/publicidad.co
 import { PreciosComponent } from './Pagina_Principal/precios/precios.component';
 import { Main2Component } from './Pagina_InicioSesion/main2/main2.component';
 import { FormularioComponent } from './Pagina_InicioSesion/formulario/formulario.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { FormularioComponent } from './Pagina_InicioSesion/formulario/formulario
     Main2Component,
     FormularioComponent,
     Body3Component,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
