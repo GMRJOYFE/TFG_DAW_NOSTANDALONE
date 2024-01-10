@@ -1,5 +1,7 @@
+// app.module.ts
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms'; // Agrega esta línea
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -38,7 +40,8 @@ import { FormregistroComponent } from './Pagina_Registro/formregistro/formregist
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule // Agrega FormsModule al arreglo de imports
   ],
   providers: [],
   bootstrap: [AppComponent]

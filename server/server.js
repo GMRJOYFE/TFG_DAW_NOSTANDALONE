@@ -7,10 +7,10 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 const db = mysql.createConnection({
-  host: 'localhost',
-  user: 'tu_usuario',
-  password: 'tu_contraseña',
-  database: 'nombre_de_tu_base_de_datos',
+  host: 'root',
+  user: 'Aa',
+  password: '',
+  database: 'guesar',
 });
 
 db.connect((err) => {
@@ -64,6 +64,16 @@ app.post('/login', async (req, res) => {
       }
     }
   });
+});
+
+// Ruta de ejemplo para autenticación
+app.post('/api/login', (req, res) => {
+  const { email, password } = req.body;
+
+  // Realiza la autenticación con la base de datos aquí
+
+  // Envía una respuesta de ejemplo
+  res.json({ success: true, message: 'Inicio de sesión exitoso' });
 });
 
 app.listen(port, () => {
