@@ -16,9 +16,10 @@ import { PublicidadComponent } from './Pagina_Principal/publicidad/publicidad.co
 import { PreciosComponent } from './Pagina_Principal/precios/precios.component';
 import { Main2Component } from './Pagina_InicioSesion/main2/main2.component';
 import { FormularioComponent } from './Pagina_InicioSesion/formulario/formulario.component';
-import { LoginComponent } from './login/login.component';
 import { Main3Component } from './Pagina_Registro/main3/main3.component';
 import { FormregistroComponent } from './Pagina_Registro/formregistro/formregistro.component';
+import { Main4Component } from './Pagina_CambioPass/main4/main4.component';
+import { FormcambiopassComponent } from './Pagina_CambioPass/formcambiopass/formcambiopass.component';
 
 @NgModule({
   declarations: [
@@ -34,9 +35,10 @@ import { FormregistroComponent } from './Pagina_Registro/formregistro/formregist
     Main2Component,
     FormularioComponent,
     Body3Component,
-    LoginComponent,
     Main3Component,
     FormregistroComponent,
+    Main4Component,
+    FormcambiopassComponent,
   ],
   imports: [
     BrowserModule,

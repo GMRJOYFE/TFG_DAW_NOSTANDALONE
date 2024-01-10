@@ -2,14 +2,17 @@ const express = require('express');
 const mysql = require('mysql');
 const bodyParser = require('body-parser');
 const bcrypt = require('bcrypt');
+const path = require('path'); // Añade esta línea
+
 
 const app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 4200;
+
 
 const db = mysql.createConnection({
-  host: 'root',
-  user: 'Aa',
-  password: '',
+  host: '127.0.0.1',
+  user: 'Guillermo',
+  password: '1234',
   database: 'guesar',
 });
 
@@ -24,7 +27,7 @@ db.connect((err) => {
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// Ruta para registro de usuarios
+// Registro Usuarios
 app.post('/register', async (req, res) => {
   const { username, email, password } = req.body;
 
@@ -42,7 +45,8 @@ app.post('/register', async (req, res) => {
   });
 });
 
-// Ruta para login de usuarios
+
+// Login Usuarios
 app.post('/login', async (req, res) => {
   const { username, password } = req.body;
 
@@ -66,15 +70,17 @@ app.post('/login', async (req, res) => {
   });
 });
 
+
 // Ruta de ejemplo para autenticación
-app.post('/api/login', (req, res) => {
-  const { email, password } = req.body;
 
-  // Realiza la autenticación con la base de datos aquí
 
-  // Envía una respuesta de ejemplo
-  res.json({ success: true, message: 'Inicio de sesión exitoso' });
+//Archivos estáticos Angular
+app.use(express.static(path.join(__dirname, 'dist/tfg-guille-cesar-no-standalone')));
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'dist/tfg-guille-cesar-no-standalone/src/index.html'));
 });
+
 
 app.listen(port, () => {
   console.log(`Servidor Express.js escuchando en el puerto ${port}`);
