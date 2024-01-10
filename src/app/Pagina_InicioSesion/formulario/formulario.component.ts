@@ -8,18 +8,18 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./formulario.component.scss']
 })
 export class FormularioComponent {
-  email: string = '';
-  password: string = '';
+  // email: string = '';
+  // password: string = '';
 
-  constructor(private http: HttpClient) {}
+  // constructor(private http: HttpClient) {}
 
-  login() {
-    const apiUrl = 'http://localhost:4200/main2';
+  // login() {
+  //   const apiUrl = 'http://localhost:4200/main2';
 
-    // Realiza una solicitud POST al servidor Express
-    this.http.post(apiUrl, { email: this.email, password: this.password }).subscribe(response => {
-      console.log(response);
-      // Maneja la respuesta del servidor aquí
-    });
-  }
+  //   // Realiza una solicitud POST al servidor Express
+  //   this.http.post(apiUrl, { email: this.email, password: this.password }).subscribe(response => {
+  //     console.log(response);
+  //     // Maneja la respuesta del servidor aquí
+  //   });
+  // }
 }

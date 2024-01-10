@@ -1,3 +1,10 @@
-#carouselExampleDark{
-    height: 30%;
-}
+.carousel-item {
+    overflow: hidden;
+  }
+  
+  .carousel-item img {
+    width: 200%; /* Ajusta este valor según sea necesario */
+    object-fit: cover;
+    margin-bottom: -110%; /* Ajusta este valor a la mitad del valor de width */
+  }
+  
