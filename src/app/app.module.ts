@@ -20,6 +20,7 @@ import { Main3Component } from './Pagina_Registro/main3/main3.component';
 import { FormregistroComponent } from './Pagina_Registro/formregistro/formregistro.component';
 import { Main4Component } from './Pagina_CambioPass/main4/main4.component';
 import { FormcambiopassComponent } from './Pagina_CambioPass/formcambiopass/formcambiopass.component';
+import { CarouselComponent } from './Pagina_Principal/carousel/carousel.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { FormcambiopassComponent } from './Pagina_CambioPass/formcambiopass/form
     FormregistroComponent,
     Main4Component,
     FormcambiopassComponent,
+    CarouselComponent,
   ],
   imports: [
     BrowserModule,
