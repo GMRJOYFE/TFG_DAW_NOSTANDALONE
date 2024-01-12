@@ -1,0 +1,22 @@
+Tuvimos que actualizar el método de autenticación del usuario en MySQL porque haciendo el create new usuario normal no era válido
+para hacer la comprobación.
+
+Creamos el usuario:
+
+SELECT user FROM mysql.user WHERE user = 'Guillermo';
+
+
+Modificamos el tipo de autenticación:
+
+ALTER USER 'Guillermo'@'localhost' IDENTIFIED WITH 'mysql_native_password' BY '1234';
+
+
+Para verificar el cambio hacemos un select a la tabla de usuarios
+
+SELECT user, host, plugin FROM mysql.user WHERE user = 'Guillermo';
+
+
+Le damos todos los privilegios al usuario para poder acceder con express
+
+GRANT ALL PRIVILEGES ON *.* TO 'Guillermo'@'localhost';
+
