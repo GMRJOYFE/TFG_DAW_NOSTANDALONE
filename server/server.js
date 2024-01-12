@@ -70,6 +70,42 @@ app.post('/login', async (req, res) => {
   });
 });
 
+// Cambio de Contraseña
+app.post('/change-password', async (req, res) => {
+  const { username, oldPassword, newPassword } = req.body;
+
+  // Verifica las credenciales del usuario antes de cambiar la contraseña
+  const checkCredentialsSQL = 'SELECT * FROM usuarios WHERE username = ?';
+  db.query(checkCredentialsSQL, [username], async (err, result) => {
+    if (err) {
+      console.error('Error al buscar usuario en MySQL:', err);
+      res.status(500).send('Error interno del servidor');
+    } else {
+      if (result.length > 0) {
+        const match = await bcrypt.compare(oldPassword, result[0].password);
+        if (match) {
+          // Hash de la nueva contraseña antes de almacenarla en la base de datos
+          const hashedNewPassword = await bcrypt.hash(newPassword, 10);
+
+          // Actualiza la contraseña en la base de datos
+          const updatePasswordSQL = 'UPDATE usuarios SET password = ? WHERE username = ?';
+          db.query(updatePasswordSQL, [hashedNewPassword, username], (err, updateResult) => {
+            if (err) {
+              console.error('Error al cambiar la contraseña en MySQL:', err);
+              res.status(500).send('Error interno del servidor');
+            } else {
+              res.status(200).send('Contraseña cambiada con éxito');
+            }
+          });
+        } else {
+          res.status(401).send('Contraseña actual incorrecta');
+        }
+      } else {
+        res.status(404).send('Usuario no encontrado');
+      }
+    }
+  });
+});
 
 // Ruta de ejemplo para autenticación
 
