@@ -2,12 +2,11 @@ const express = require('express');
 const mysql = require('mysql');
 const bodyParser = require('body-parser');
 const bcrypt = require('bcrypt');
-const path = require('path'); // Añade esta línea
-
+const path = require('path');
+const cors = require('cors');
 
 const app = express();
 const port = process.env.PORT || 4200;
-
 
 const db = mysql.createConnection({
   host: '127.0.0.1',
@@ -26,12 +25,11 @@ db.connect((err) => {
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cors());
 
 // Registro Usuarios
 app.post('/register', async (req, res) => {
   const { username, email, password } = req.body;
-
-  // Hash de la contraseña antes de almacenarla en la base de datos
   const hashedPassword = await bcrypt.hash(password, 10);
 
   const sql = 'INSERT INTO usuarios (username, email, password) VALUES (?, ?, ?)';
@@ -45,13 +43,12 @@ app.post('/register', async (req, res) => {
   });
 });
 
-
 // Login Usuarios
 app.post('/login', async (req, res) => {
-  const { username, password } = req.body;
+  const { email, password } = req.body;
 
-  const sql = 'SELECT * FROM usuarios WHERE username = ?';
-  db.query(sql, [username], async (err, result) => {
+  const sql = 'SELECT * FROM usuarios WHERE email = ?'; // Cambia a buscar por el campo 'email'
+  db.query(sql, [email], async (err, result) => {
     if (err) {
       console.error('Error al buscar usuario en MySQL:', err);
       res.status(500).send('Error interno del servidor');
@@ -72,11 +69,10 @@ app.post('/login', async (req, res) => {
 
 // Cambio de Contraseña
 app.post('/change-password', async (req, res) => {
-  const { username, oldPassword, newPassword } = req.body;
+  const { email, oldPassword, newPassword } = req.body;
 
-  // Verifica las credenciales del usuario antes de cambiar la contraseña
-  const checkCredentialsSQL = 'SELECT * FROM usuarios WHERE username = ?';
-  db.query(checkCredentialsSQL, [username], async (err, result) => {
+  const checkCredentialsSQL = 'SELECT * FROM usuarios WHERE email = ?';
+  db.query(checkCredentialsSQL, [email], async (err, result) => {
     if (err) {
       console.error('Error al buscar usuario en MySQL:', err);
       res.status(500).send('Error interno del servidor');
@@ -84,12 +80,9 @@ app.post('/change-password', async (req, res) => {
       if (result.length > 0) {
         const match = await bcrypt.compare(oldPassword, result[0].password);
         if (match) {
-          // Hash de la nueva contraseña antes de almacenarla en la base de datos
           const hashedNewPassword = await bcrypt.hash(newPassword, 10);
-
-          // Actualiza la contraseña en la base de datos
-          const updatePasswordSQL = 'UPDATE usuarios SET password = ? WHERE username = ?';
-          db.query(updatePasswordSQL, [hashedNewPassword, username], (err, updateResult) => {
+          const updatePasswordSQL = 'UPDATE usuarios SET password = ? WHERE email = ?';
+          db.query(updatePasswordSQL, [hashedNewPassword, email], (err, updateResult) => {
             if (err) {
               console.error('Error al cambiar la contraseña en MySQL:', err);
               res.status(500).send('Error interno del servidor');
@@ -107,16 +100,11 @@ app.post('/change-password', async (req, res) => {
   });
 });
 
-// Ruta de ejemplo para autenticación
-
-
-//Archivos estáticos Angular
 app.use(express.static(path.join(__dirname, 'dist/tfg-guille-cesar-no-standalone')));
 
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'dist/tfg-guille-cesar-no-standalone/src/index.html'));
 });
-
 
 app.listen(port, () => {
   console.log(`Servidor Express.js escuchando en el puerto ${port}`);
